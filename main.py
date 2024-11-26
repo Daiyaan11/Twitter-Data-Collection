@@ -44,7 +44,7 @@ topics = extract_topics(cleaned_tweets)
 entities = [extract_named_entities(tweet.text) for tweet in tweets[:10]]
 
 try:
-    tweets = collect_tweets(query, max_results=100)
+    tweets = tweets = [type('Tweet', (object,), tweet) for tweet in tweets]  # Simulate Tweepy Tweet objects
     save_to_csv(tweets, "data/tweets.csv")
     save_to_json(tweets, "data/tweets.json")
 except KeyboardInterrupt:
